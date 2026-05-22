@@ -1,0 +1,55 @@
+@model IEnumerable<PruebaTecnica.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h1>Posts List</h1>
+
+<!-- Mensaje de éxito -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<!-- Aviso de JSONPlaceholder -->
+<div class="alert alert-info" role="alert">
+    <strong>Note:</strong> This application uses <strong>JSONPlaceholder</strong>, a fake API for testing. 
+    Create, Edit, and Delete operations simulate success but data is <strong>not actually persisted</strong>. 
+    This is designed for learning purposes only.
+</div>
+
+<div>
+    <a asp-controller="Post" asp-action="Create" class="btn btn-primary">Create New Post</a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>UserId</th>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>@post.UserId</td>
+                <td>@post.Id</td>
+                <td>@post.Title</td>
+                <td>@post.Body</td>
+                <td>
+                    <a asp-controller="Post" asp-action="Details" asp-route-id="@post.Id" class="btn btn-sm btn-info">Details</a>
+                    <a asp-controller="Post" asp-action="Edit" asp-route-id="@post.Id" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.Id" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
