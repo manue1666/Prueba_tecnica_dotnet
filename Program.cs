@@ -2,6 +2,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient("JSONPlaceholder", client =>
+{
+    client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
+});
+builder.Services.AddScoped<PruebaTecnica.Services.PostService>();
 
 var app = builder.Build();
 
