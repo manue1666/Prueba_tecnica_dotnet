@@ -1,0 +1,41 @@
+@model PruebaTecnica.Models.Post
+
+@{
+    ViewData["Title"] = "Post Details";
+}
+
+<h1>Post Details</h1>
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            UserId
+        </dt>
+        <dd class="col-sm-10">
+            @Model.UserId
+        </dd>
+        <dt class="col-sm-2">
+            Id
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Id
+        </dd>
+        <dt class="col-sm-2">
+            Title
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Title
+        </dd>
+        <dt class="col-sm-2">
+            Body
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Body
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Post" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-controller="Post" asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

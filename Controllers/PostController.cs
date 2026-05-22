@@ -58,6 +58,7 @@ public class PostController : Controller
             return View(post);
         }
         
+        TempData["SuccessMessage"] = "Post created successfully";
         return RedirectToAction(nameof(Index));
     }
 
@@ -97,6 +98,7 @@ public class PostController : Controller
             return View(post);
         }
 
+        TempData["SuccessMessage"] = "Post updated successfully";
         return RedirectToAction(nameof(Index));
     }
 
@@ -131,6 +133,7 @@ public class PostController : Controller
             return View(post);
         }
 
+        TempData["SuccessMessage"] = "Post deleted successfully";
         return RedirectToAction(nameof(Index));
     }
 }
